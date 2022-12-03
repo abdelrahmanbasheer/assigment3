@@ -1,12 +1,20 @@
 const playerSelection = function() {
-    return prompt("Choose your weapon - Rock, Paper or Scissors?");
-  };
+const answer= prompt("Choose your weapon - Rock, Paper or Scissors?");
+if(answer.toLowerCase().trim()==="rock"||answer.toLowerCase().trim()==="paper"||answer.toLowerCase().trim()==="scissors"){ 
+    return answer.toLowerCase().trim() 
+}
+else{
+    console.log("invalid input")
+    playerSelection()  
+}
+
+};
   const options = ["rock", "paper", "scissors"];
   const computerSelection = function computerPlay() {
     return options[Math.floor(Math.random()*options.length)];
   };
 function playRound(playerSelection, computerSelection) {
-    if (playerSelection === computerSelection) {
+     if (playerSelection === computerSelection) {
         console.log(`It's a tie! you both picked ${playerSelection}`); 
      } else if (playerSelection === "rock" && computerSelection === "scissors") {
         console.log("You win! Rock beats Scissors") ;
@@ -17,7 +25,8 @@ function playRound(playerSelection, computerSelection) {
      } else if (playerSelection === "scissors" && computerSelection === "paper") {
         console.log("You win! Scissors beats Paper") ;
         return true
-     } else {
+     }
+     else{
         console.log( `You lose! ${computerSelection} beats ${playerSelection}`);
         return false
      }
@@ -29,16 +38,18 @@ function fullGame() {
   let result = 0;
 
   while ( round <= 5 ) {
-
+    console.log(`Round ${round}`)
     result = playRound(playerSelection(), computerSelection());
     if ( result === true ) {
       playerWins++;
-    } else {
+      round++;
+    } else 
       if ( result === false ) {
         botWins++;
+        round++;
       }
-    }
-    round++;
+    
+    
   }
   if(playerWins<botWins){
     console.log("You Lost The game better luck next time !")
