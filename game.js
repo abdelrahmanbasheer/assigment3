@@ -43,11 +43,10 @@ function fullGame() {
     result = playRound(playerSelection(), computerSelection());
     if (result === true) {
       playerWins++;
-      round++;
     } else if (result === false) {
       botWins++;
-      round++;
     }
+     round++;
   }
   if (playerWins < botWins) {
     console.log("You Lost The game better luck next time !");
